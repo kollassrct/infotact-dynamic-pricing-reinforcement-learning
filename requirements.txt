@@ -1,0 +1,25 @@
+# ============================================================
+# Requirements — Travel & Hospitality: RL Dynamic Pricing
+# Project 2 | Infotact Solutions | Branch: preeti-dev
+# Install with: pip install -r requirements.txt
+# ============================================================
+
+# Core RL Environment
+gymnasium==0.29.1
+
+# Deep Learning (for DQN in Week 3)
+torch==2.3.0
+
+# Data & Math
+numpy==1.26.4
+pandas==2.2.2
+
+# Visualization
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# Dashboard (Week 4)
+streamlit==1.35.0
+
+# Utilities
+tqdm==4.66.4
