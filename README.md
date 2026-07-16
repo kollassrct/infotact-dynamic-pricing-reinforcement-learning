@@ -50,30 +50,30 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 ## 📅 Project Roadmap
 
 ### Week 1 — Environment & Simulation
-- [x] Design the MDP (states, actions, rewards)
-- [x] Build custom Gymnasium environment
-- [x] Implement multi-industry demand simulator
-- [x] Support all four industry types
-- [x] Unit testing & environment validation
+- [ ] Design the MDP (states, actions, rewards)
+- [ ] Build custom Gymnasium environment
+- [ ] Implement multi-industry demand simulator
+- [ ] Support all four industry types
+- [ ] Unit testing & environment validation
 
 ### Week 2 — Baselines & Q-Learning
-- [x] Implement fixed-price and discount baselines
-- [x] Build Q-Learning agent with Q-table
-- [x] Add ε-greedy exploration strategy
-- [x] Compare revenues across baselines vs Q-Learning
+- [ ] Implement fixed-price and discount baselines
+- [ ] Build Q-Learning agent with Q-table
+- [ ] Add ε-greedy exploration strategy
+- [ ] Compare revenues across baselines vs Q-Learning
 
 ### Week 3 — Deep Q-Network (DQN)
-- [x] Implement DQN with neural network Q-function
-- [x] Add experience replay buffer
-- [x] Add target network for stable training
-- [x] Hyperparameter tuning
-- [x] Cross-industry evaluation
+- [ ] Implement DQN with neural network Q-function
+- [ ] Add experience replay buffer
+- [ ] Add target network for stable training
+- [ ] Hyperparameter tuning
+- [ ] Cross-industry evaluation
 
 ### Week 4 — Evaluation & Dashboard
-- [x] Evaluate over 1,000 simulations
-- [x] Build Streamlit dashboard with full KPI suite
-- [x] Business insights automation
-- [x] Final report
+- [ ] Evaluate over 1,000 simulations
+- [ ] Build Streamlit dashboard with full KPI suite
+- [ ] Business insights automation
+- [ ] Final report
 
 ---
 
@@ -223,8 +223,11 @@ Available in `report/final_report.pdf` after Week 4 completion.
 ## 👤 Author
 
 **K Satya Sri Ram Charan Teja Kolla**  
-B.Tech CSE (Data Science) — Malla Reddy College of Engineering, Hyderabad  
-GitHub: [kollassrct](https://github.com/kollassrct)
+**Preeti Auditto**
+**K Nuthan Sai**
+**Karthik Chadda**
+**Faraz Khan**
+
 
 ---
 
