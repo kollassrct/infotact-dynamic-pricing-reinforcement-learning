@@ -1,0 +1,25 @@
+Industry,Agent,Avg Revenue,Avg Occupancy
+Airline,Fixed-Low,21600.0,100.0
+Airline,Fixed-Mid,43200.0,100.0
+Airline,Fixed-High,72000.0,100.0
+Airline,Discount-Basic,64091.2,100.0
+Airline,Discount-V2,65262.4,100.0
+Airline,Q-Learning,37515.2,100.0
+Hotel,Fixed-Low,10500.0,100.0
+Hotel,Fixed-Mid,17250.0,100.0
+Hotel,Fixed-High,24000.0,100.0
+Hotel,Discount-Basic,24000.0,100.0
+Hotel,Discount-V2,24000.0,100.0
+Hotel,Q-Learning,18946.12,100.0
+Concert,Fixed-Low,103334.0,51.67
+Concert,Fixed-Mid,180600.0,36.12
+Concert,Fixed-High,103238.0,10.32
+Concert,Discount-Basic,125342.6,31.53
+Concert,Discount-V2,125312.8,31.52
+Concert,Q-Learning,171595.4,35.74
+Stadium,Fixed-Low,117862.2,6.55
+Stadium,Fixed-Mid,187153.2,5.2
+Stadium,Fixed-High,203338.8,3.39
+Stadium,Discount-Basic,168544.2,4.99
+Stadium,Discount-V2,168633.72,5.0
+Stadium,Q-Learning,187286.28,4.89
