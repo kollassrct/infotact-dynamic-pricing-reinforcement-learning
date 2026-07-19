@@ -50,7 +50,6 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 ## 📅 Project Roadmap
 
 ### Week 1 — Environment & Simulation
-<<<<<<< HEAD
 - [x] Design the MDP (states, actions, rewards)
 - [x] Build custom Gymnasium environment
 - [x] Implement multi-industry demand simulator
@@ -71,11 +70,10 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 - [x] Cross-industry evaluation
 
 ### Week 4 — Evaluation & Dashboard
-- [x] Evaluate over 1,000 simulations
-- [x] Build Streamlit dashboard with full KPI suite
-- [x] Business insights automation
-- [x] Final report
-=======
+- [ ] Evaluate over 1,000 simulations
+- [ ] Build Streamlit dashboard with full KPI suite
+- [ ] Business insights automation
+- [ ] Final report
 - [ ] Design the MDP (states, actions, rewards)
 - [ ] Build custom Gymnasium environment
 - [ ] Implement multi-industry demand simulator
@@ -100,7 +98,6 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 - [ ] Build Streamlit dashboard with full KPI suite
 - [ ] Business insights automation
 - [ ] Final report
->>>>>>> 0814427e644ae0a52b36c8bc38e4adf5ba83d757
 
 ---
 
@@ -250,23 +247,17 @@ Available in `report/final_report.pdf` after Week 4 completion.
 ## 👤 Author
 
 **K Satya Sri Ram Charan Teja Kolla**  
-<<<<<<< HEAD
 B.Tech CSE (Data Science) — Malla Reddy College of Engineering, Hyderabad  
 GitHub: [kollassrct](https://github.com/kollassrct)
-=======
 **Preeti Auditto**
 **K Nuthan Sai**
 **Karthik Chadda**
 **Faraz Khan**
 
->>>>>>> 0814427e644ae0a52b36c8bc38e4adf5ba83d757
 
 ---
 
 ## 📜 License
 
-<<<<<<< HEAD
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-=======
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
->>>>>>> 0814427e644ae0a52b36c8bc38e4adf5ba83d757
