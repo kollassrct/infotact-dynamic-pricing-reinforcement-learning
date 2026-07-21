@@ -59,15 +59,15 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 ### Week 2 — Baselines & Q-Learning
 - [x] Implement fixed-price and discount baselines
 - [x] Build Q-Learning agent with Q-table
-- [x] Add ε-greedy exploration strategy
-- [x] Compare revenues across baselines vs Q-Learning
+- [ ] Add ε-greedy exploration strategy
+- [ ] Compare revenues across baselines vs Q-Learning
 
 ### Week 3 — Deep Q-Network (DQN)
-- [x] Implement DQN with neural network Q-function
-- [x] Add experience replay buffer
-- [x] Add target network for stable training
-- [x] Hyperparameter tuning
-- [x] Cross-industry evaluation
+- [ ] Implement DQN with neural network Q-function
+- [ ] Add experience replay buffer
+- [ ] Add target network for stable training
+- [ ] Hyperparameter tuning
+- [ ] Cross-industry evaluation
 
 ### Week 4 — Evaluation & Dashboard
 - [ ] Evaluate over 1,000 simulations
