@@ -155,7 +155,7 @@ def main():
     df.to_csv("results/week2_comparison.csv", index=False)
 
     print("\n" + "="*65)
-    print("✅ Week 2 comparison complete!")
+    print("✅ Week 2 comparison complete")
     print("📁 Saved to results/week2_comparison.csv")
     print("="*65 + "\n")
 
