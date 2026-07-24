@@ -120,6 +120,6 @@ class DemandSimulator:
         if demand < base * 0.7:
             return 0   # Low
         elif demand < base * 1.3:
-            return 1   # Medium
+            return 1   #Medium
         else:
-            return 2   # High
+            return 2   #High

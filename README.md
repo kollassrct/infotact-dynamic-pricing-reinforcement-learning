@@ -59,8 +59,8 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 ### Week 2 — Baselines & Q-Learning
 - [x] Implement fixed-price and discount baselines
 - [x] Build Q-Learning agent with Q-table
-- [ ] Add ε-greedy exploration strategy
-- [ ] Compare revenues across baselines vs Q-Learning
+- [x] Add ε-greedy exploration strategy
+- [x] Compare revenues across baselines vs Q-Learning
 
 ### Week 3 — Deep Q-Network (DQN)
 - [ ] Implement DQN with neural network Q-function
