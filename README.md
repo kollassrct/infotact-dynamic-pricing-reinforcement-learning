@@ -1,29 +1,58 @@
-# DynamicRL 🎯
-### A Multi-Domain Reinforcement Learning Framework for Revenue Optimization of Finite Inventory
+<div align="center">
 
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://python.org)
-[![Gymnasium](https://img.shields.io/badge/Gymnasium-0.29%2B-green)](https://gymnasium.farama.org/)
-[![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)](https://streamlit.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+# ✈️ RevenueRL
+
+### Reinforcement Learning for Airline Dynamic Pricing
+
+*An autonomous pricing agent that learns to maximize airline revenue through trial-and-error — benchmarked against real airline industry formulas.*
+
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://python.org)
+[![Gymnasium](https://img.shields.io/badge/Gymnasium-0.29%2B-00C853?logo=openaigym&logoColor=white)](https://gymnasium.farama.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-DQN-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org)
+[![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Status](https://img.shields.io/badge/Status-Complete-34D399)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-FBBF24.svg)](LICENSE)
+
+**Infotact Solutions** · Travel & Hospitality Domain · 4-Week Internship Project
+
+</div>
 
 ---
 
 ## 📌 Overview
 
-Many industries share a fundamental constraint: **finite, perishable inventory**. An unsold airline seat, hotel room, or concert ticket on the day of the event is revenue lost forever. Static pricing strategies fail to adapt to shifting demand, competitor moves, and time pressure.
+Airlines sell a **fixed, perishable inventory** — once a flight departs, every empty seat is revenue lost forever. Static pricing rules can't adapt to shifting demand, competitor moves, or the shrinking time left before departure.
 
-**DynamicRL** solves this with a universal reinforcement learning engine that learns optimal dynamic pricing policies across four industries — maximizing cumulative revenue while balancing sell-through rates and pricing integrity.
+**RevenueRL** solves this with a reinforcement learning agent that learns optimal pricing purely through simulated experience — no historical dataset required. The agent plays thousands of simulated 30-day booking seasons and discovers strategies like discounting prices as the deadline nears, entirely on its own.
+
+> 🎯 **The core question this project answers:** *Can an RL agent actually beat the pricing formula airlines use today?*
 
 ---
 
-## 🏭 Supported Industries
+## ⭐ What Makes This Project Different
 
-| Industry | Inventory Unit | Expiry Type |
-|---|---|---|
-| ✈️ Airlines | Seats per flight | Flight departure |
-| 🏨 Hotels | Rooms per night | Check-in date |
-| 🎵 Concerts | Tickets per show | Event day |
-| 🏟️ Stadium Events | Seats per game | Game day |
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 📐 Real Industry Benchmark
+Evaluated against **EMSR-b** (Expected Marginal Seat Revenue) — the actual airline revenue management formula used in the industry since 1989. Not a toy heuristic.
+
+### 👥 Three Customer Segments
+Business, leisure, and last-minute travellers — each with distinct price sensitivity and booking timing behaviour.
+
+</td>
+<td width="50%" valign="top">
+
+### 🎯 Competitor-Aware Pricing
+A rival airline's price is part of the agent's state — it must react to the market, not price in isolation.
+
+### 🛡️ Safety Bounds
+Hard price floor/ceiling + max daily price swing — mirroring how a real Revenue Manager configures guardrails before deploying any pricing algorithm.
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -33,103 +62,88 @@ Many industries share a fundamental constraint: **finite, perishable inventory**
 
 | Component | Description |
 |---|---|
-| **State** | Remaining inventory, days left, demand level, competitor price, event type, seasonality |
-| **Action** | Select a price level for the current booking day |
-| **Reward** | Revenue earned minus penalties for unsold inventory and undesirable pricing behavior |
-| **Goal** | Maximize cumulative revenue across the booking horizon |
+| **State** | `[eco_seats_left, biz_seats_left, days_until_departure, competitor_price_idx, market_event_id]` |
+| **Action** | `[economy_price_level, business_price_level]` — 8 tiers each |
+| **Reward** | Daily revenue (economy + business) minus safety violation penalty |
+| **Terminal** | Flight departs (day = 0) **OR** both classes sold out |
 
-### Algorithms
+### Algorithms Implemented
 
-- **Baseline 1** — Fixed pricing strategy
-- **Baseline 2** — Discount/rule-based pricing
-- **Q-Learning** — Tabular Q-table with ε-greedy exploration
-- **DQN** — Deep Q-Network with experience replay and target network
+| # | Strategy | Type |
+|---|----------|------|
+| 1 | Fixed Price | Naive baseline |
+| 2 | Time-Based Discount | Naive baseline |
+| 3 | **EMSR-b** | ★ Real airline industry formula (1989) |
+| 4 | Q-Learning | Tabular RL, ε-greedy exploration |
+| 5 | **Deep Q-Network (DQN)** | ★ Neural network + experience replay + target network |
 
 ---
 
 ## 📅 Project Roadmap
 
-### Week 1 — Environment & Simulation
-- [ ] Design the MDP (states, actions, rewards)
-- [ ] Build custom Gymnasium environment
-- [ ] Implement multi-industry demand simulator
-- [ ] Support all four industry types
-- [ ] Unit testing & environment validation
+### ✅ Week 1 — MDP Design & Gym Environment
+- [x] Formulated the pricing problem as a Markov Decision Process
+- [x] Built a custom Gymnasium environment (`ContextualAirlinePricingEnv`)
+- [x] Designed a stochastic demand function — price sensitivity × urgency × competitor reaction × market events
+- [x] Implemented and unit-tested Safety Bounds
+- [x] Established a 500-episode random-agent baseline
 
-### Week 2 — Baselines & Q-Learning
-- [ ] Implement fixed-price and discount baselines
-- [ ] Build Q-Learning agent with Q-table
-- [ ] Add ε-greedy exploration strategy
-- [ ] Compare revenues across baselines vs Q-Learning
+### ✅ Week 2 — Baselines & Q-Learning
+- [x] Implemented Fixed Price and Time-Based Discount heuristics
+- [x] Implemented EMSR-b as a credible industry benchmark
+- [x] Built a tabular Q-Learning agent with state discretization
+- [x] Trained over 8,000 episodes and benchmarked against all baselines
 
-### Week 3 — Deep Q-Network (DQN)
-- [ ] Implement DQN with neural network Q-function
-- [ ] Add experience replay buffer
-- [ ] Add target network for stable training
-- [ ] Hyperparameter tuning
-- [ ] Cross-industry evaluation
+### ✅ Week 3 — Deep Reinforcement Learning (DQN)
+- [x] Replaced the Q-table with a neural network Q-function
+- [x] Implemented experience replay buffer for training stability
+- [x] Implemented a target network to prevent moving-target instability
+- [x] Handled exploration-exploitation trade-off via epsilon-greedy decay
 
-### Week 4 — Evaluation & Dashboard
-- [ ] Evaluate over 1,000 simulations
-- [ ] Build Streamlit dashboard with full KPI suite
-- [ ] Business insights automation
-- [ ] Final report
+### ✅ Week 4 — Policy Evaluation & Business Dashboard
+- [x] Evaluated DQN vs all baselines across 1,000 simulated booking seasons
+- [x] Plotted Price Trajectories proving learned deadline-discounting behaviour
+- [x] Computed projected annual business impact vs EMSR-b
+- [x] Built a Streamlit dashboard for technical + business audiences
 
 ---
 
-## 📊 Streamlit Dashboard Features
-
-The dashboard is designed for both business executives and ML practitioners.
+## 📊 Dashboard Features
 
 | Panel | Description |
 |---|---|
-| **Executive Overview** | High-level KPIs: total revenue, occupancy rate, avg. price |
-| **Industry Selector** | Switch between Airlines, Hotels, Concerts, Stadium |
-| **Live Booking Simulator** | Simulate bookings in real time |
-| **Dynamic Pricing Timeline** | Price trajectory across the booking horizon |
-| **Revenue Comparison** | Fixed vs. discount vs. Q-Learning vs. DQN |
-| **Occupancy Gauge** | Inventory utilization at a glance |
-| **Demand Curve** | Demand level vs. pricing response |
-| **RL Learning Metrics** | Training reward curves, loss, epsilon decay |
-| **Policy Visualization** | Q-value heatmaps and optimal policy grids |
-| **What-If Analysis** | Adjust inventory/demand/days and see projected revenue |
-| **Business Insights** | Automated recommendations generated from results |
+| **Executive Summary** | Best strategy, revenue per season, % improvement vs EMSR-b, projected annual gain |
+| **Strategy Comparison** | Revenue distribution, sell-through rate, safety compliance across all strategies |
+| **Price Trajectory** | Visual proof the agent learned deadline-aware discounting |
+| **Safety & Robustness** | Safety bound compliance per strategy |
 
 ---
 
 ## 🗂️ Project Structure
 
 ```
-DynamicRL/
+RevenueRL/
 │
-├── env/
-│   ├── dynamic_pricing_env.py       # Custom Gymnasium environment
-│   └── demand_simulator.py          # Multi-industry demand model
+├── notebooks/
+│   ├── 01_gym_environment.ipynb      # Week 1 — MDP + custom Gym environment
+│   ├── 02_baselines_qlearning.ipynb  # Week 2 — Fixed/Discount/EMSR-b + Q-Learning
+│   ├── 03_dqn_agent.ipynb            # Week 3 — Deep Q-Network
+│   └── 04_evaluation.ipynb           # Week 4 — 1,000-season evaluation
 │
-├── agents/
-│   ├── baseline_fixed.py            # Fixed price baseline
-│   ├── baseline_discount.py         # Discount/rule-based baseline
-│   ├── q_learning_agent.py          # Tabular Q-Learning agent
-│   └── dqn_agent.py                 # Deep Q-Network agent
+├── models/
+│   ├── q_table.pkl                   # Trained Q-Learning table
+│   └── dqn_weights.pth               # Trained DQN neural network weights
 │
-├── training/
-│   ├── train_qlearning.py           # Q-Learning training loop
-│   └── train_dqn.py                 # DQN training loop
+├── data/
+│   ├── week1_random_baseline.csv
+│   ├── week2_strategy_comparison.csv
+│   ├── week3_final_leaderboard.csv
+│   ├── week4_final_1000season_results.csv
+│   └── week4_business_summary.csv
 │
-├── evaluation/
-│   ├── simulate.py                  # 1000-episode evaluation runner
-│   └── metrics.py                   # Revenue, occupancy, pricing metrics
+├── reports/                          # 11 generated charts & visualizations
 │
-├── dashboard/
-│   └── app.py                       # Streamlit dashboard
-│
-├── results/
-│   ├── models/                      # Saved Q-tables and DQN weights
-│   └── plots/                       # Generated figures
-│
-├── report/
-│   └── final_report.pdf             # Week 4 final report
-│
+├── dashboard.py                      # Streamlit business dashboard
 ├── requirements.txt
 └── README.md
 ```
@@ -138,99 +152,90 @@ DynamicRL/
 
 ## ⚙️ Setup & Installation
 
-### Prerequisites
-
-- Python 3.10+
-- pip
-
-### Install Dependencies
-
 ```bash
-git clone https://github.com/<your-username>/DynamicRL.git
-cd DynamicRL
+git clone https://github.com/YOUR_USERNAME/RevenueRL.git
+cd RevenueRL
+
+python -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+
 pip install -r requirements.txt
 ```
 
-### Key Dependencies
+<details>
+<summary><b>📦 requirements.txt</b></summary>
 
 ```txt
 gymnasium
+torch
 numpy
 pandas
-torch
 matplotlib
+seaborn
 streamlit
-plotly
-scikit-learn
+tqdm
 ```
+</details>
 
 ---
 
 ## 🚀 Running the Project
 
-### Train Q-Learning Agent
-
 ```bash
-python training/train_qlearning.py --industry airline --episodes 5000
-```
+# Run notebooks in order
+jupyter notebook notebooks/01_gym_environment.ipynb
+jupyter notebook notebooks/02_baselines_qlearning.ipynb
+jupyter notebook notebooks/03_dqn_agent.ipynb
+jupyter notebook notebooks/04_evaluation.ipynb
 
-### Train DQN Agent
-
-```bash
-python training/train_dqn.py --industry hotel --episodes 10000
-```
-
-### Run Evaluation (1000 simulations)
-
-```bash
-python evaluation/simulate.py --agent dqn --industry all
-```
-
-### Launch Dashboard
-
-```bash
-streamlit run dashboard/app.py
+# Launch the business dashboard
+streamlit run dashboard.py
 ```
 
 ---
 
-## 📈 Sample Results (Placeholder)
+## 📈 Key Results
 
-| Agent | Industry | Avg. Revenue | Occupancy % |
-|---|---|---|---|
-| Fixed Price | Airline | $42,300 | 74% |
-| Discount | Airline | $48,100 | 83% |
-| Q-Learning | Airline | $54,600 | 89% |
-| **DQN** | **Airline** | **$61,200** | **94%** |
+| Strategy | Type | Mean Revenue |
+|---|---|:---:|
+| Fixed Price | Naive baseline | see `data/week4_final_1000season_results.csv` |
+| Time-Based Discount | Naive baseline | see `data/week4_final_1000season_results.csv` |
+| EMSR-b | ★ Real industry formula | see `data/week4_final_1000season_results.csv` |
+| Q-Learning | Tabular RL | see `data/week4_final_1000season_results.csv` |
+| **DQN** | **★ Deep RL** | **Best performing** |
 
-> Results will be updated after Week 4 evaluation across all 1,000 simulations.
+> Full statistics — mean, median, std, min, max revenue, sell-through rate, and safety compliance — across all 1,000 simulated seasons are saved in `data/week4_final_1000season_results.csv`.
 
 ---
 
-## 📄 Report
+## 🎓 What This Demonstrates
 
-The final project report (Week 4) covers:
-- MDP design decisions
-- Demand simulation methodology
-- Agent architecture & hyperparameters
-- Cross-industry performance comparison
-- Business recommendations
-
-Available in `report/final_report.pdf` after Week 4 completion.
+- End-to-end MDP formulation and custom Gymnasium environment design
+- Tabular Q-Learning with state discretization
+- Deep Q-Networks with experience replay and target networks
+- Statistically rigorous policy evaluation (1,000 episodes)
+- Business-grade benchmarking against a real industry formula
+- Safety-constrained RL — a genuinely production-relevant concern most academic RL projects skip
 
 ---
 
 ## 👤 Author
 
-**K Satya Sri Ram Charan Teja Kolla**  
-**Preeti Auditto**
-**K Nuthan Sai**
-**Karthik Chadda**
-**Faraz Khan**
-
+**Preeti**
+Intern — Infotact Solutions
+Domain: Travel & Hospitality · Reinforcement Learning
+Duration: 4 Weeks
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Developed as part of an internship at **Infotact Solutions**. All rights reserved.
+
+<div align="center">
+
+---
+
+*Built with 🧠 reinforcement learning and ✈️ a lot of simulated flights*
+
+</div>
