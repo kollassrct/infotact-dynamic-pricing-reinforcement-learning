@@ -1,0 +1,6 @@
+Strategy,Mean Revenue,Std Revenue,Safety Blocks/Ep,vs EMSR-b (%)
+Fixed Price,11576.0,1741.0,0.0,14.24
+DQN,11106.0,2654.0,0.0,9.6
+Q-Learning,10487.0,1802.0,11.39,3.49
+Time-Based Discount,10366.0,1792.0,0.0,2.3
+EMSR-b,10133.0,1617.0,0.1,0.0

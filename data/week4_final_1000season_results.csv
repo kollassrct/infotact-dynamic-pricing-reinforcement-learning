@@ -1,0 +1,5 @@
+Strategy,Mean Revenue,Median Revenue,Std Revenue,Min Revenue,Max Revenue,Sell-Through %,Safety Blocks/Season,vs DQN (%)
+Fixed Price,11353.0,11750.0,1886.0,4800.0,15750.0,45.1,0.0,0.43
+DQN,11304.0,11450.0,2731.0,3350.0,16750.0,41.8,0.0,0.0
+Time-Based,10196.0,10450.0,1887.0,3250.0,15750.0,46.3,0.0,-9.8
+EMSR-b,10127.0,10400.0,1677.0,4200.0,15200.0,57.3,0.11,-10.41
