@@ -222,7 +222,11 @@ streamlit run dashboard.py
 ## 👤 Author
 
 **Preeti**
-Intern — Infotact Solutions
+satya sri ram charan kolla teja
+nuthan
+karthik
+faraz
+intern — Infotact Solutions
 Domain: Travel & Hospitality · Reinforcement Learning
 Duration: 4 Weeks
 
